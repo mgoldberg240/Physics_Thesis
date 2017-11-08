@@ -1,0 +1,3 @@
+Notes on output files
+output_1_1jet.npz uses lmax = 255, Reynolds number * 5
+
