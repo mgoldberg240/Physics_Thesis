@@ -18,7 +18,7 @@ figsize = (8, 4)
 dpi = 256
 show_time = False
 gridlines = False
-coastlines = True
+coastlines = False
 edgecolor = 'none'
 proj = ccrs.PlateCarree(central_longitude=0)#, central_latitude=30)
 field = 'om'

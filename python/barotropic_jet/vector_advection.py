@@ -79,14 +79,15 @@ theta_slice = domain.distributor.layouts[-1].slices(1)[1]
 theta_len = domain.local_grid_shape(1)[1]
 theta = S.grid[theta_slice].reshape([1,theta_len])
 
-lat = theta - np.pi/2
+lat = theta - np.pi/4
 delta_th = 0.1
-u_jet['g'] = Gamma*np.tan( lat*np.tanh( lat/delta_th )/2 - np.pi/4)
+tanh_prof = -(0.5*np.tanh((theta-np.pi/2)/delta_th)-0.5)
+u_jet['g'] = (Gamma*np.tan( lat*np.tanh( lat/delta_th )/2 - np.pi/4))*tanh_prof
 
 # Matt Attempts to create 2 jets
-lat2 = theta - 7*np.pi/8
+lat2 = theta - 3*np.pi/4
 u_jet2 = domain.new_field()
-u_jet2['g'] = Gamma*np.tan( lat2*np.tanh( lat2/delta_th )/2 - np.pi/4)
+u_jet2['g'] = (Gamma*np.tan( lat2*np.tanh( lat2/delta_th )/2 - np.pi/4))*(1-tanh_prof)
 u_jet['g'] = u_jet['g'] + u_jet2['g']
 
 
